@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: HYChenMeiZiW;
+			src: url('HYChenMeiZiW.ttf') format("truetype");
+		}
+		/*添加CSS的3D翻转效果   使其更加逼真*/
+		.snowfall-flakes{animation:sakura 2s linear 0s infinite;}
+		@keyframes sakura{
+		0% {transform:rotate3d(0, , 0, 0deg);}
+		25%{transform:rotate3d(1, 1, 0, 40deg);}
+		50%{transform:rotate3d(0, 1, 0, 70deg);}
+		75%{transform:rotate3d(1, 0, 0, 70deg);}
+		100% {transform:rotate3d(1, 0, 0, 0deg);}
+		}
+	</style>
+	<link href="css/default_dev.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden_dev.js"></script>
+    <script type="text/javascript" src="js/functions_dev.js"></script>
+</head>
+<body>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="comments">* 2016年11月20日,平凡而又普通的一天</span><br />
+				<span class="comments">* 但这一天,我鼓起勇气靠近你</span><br /><br>
+
+				<span class="comments">* 我会一直记住这一天</span><br />
+				<span class="comments">* 如果记忆是一个罐头的话</span><br />
+				<span class="comments">* 我希望这一罐罐头永远不会过期</span><br />
+				<span class="comments">* 如果一定要加一个日子的话，我希望它是“一万年”</span><br /><br>
+				<span class="comments">
+<pre>
+    ____         __                          __  __
+   /  _/        / /   ____ _   _____         \ \/ /___  __  __
+   / /         / /   / __ \ | / / _ \         \  / __ \/ / / /
+ _/ /         / /___/ /_/ / |/ /  __/         / / /_/ / /_/ /
+/___/        /_____/\____/|___/\___/         /_/\____/\____/
+</pre>
+				</span>
+				<span class="comments"><img src="images/1.jpg"></span><br />
+			</div>
+
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">我们一起度过了
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						i love you forever <b>☺</b><br>
+						<div class="signature">- 小凡凡</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="Download">
+		<p>相关下载</p>
+		<a href="2.14(最终发行版本).apk" download="2.14(最终发行版本).apk">2.14(最终发行版本).apk</a><br>
+		<p>游戏</p>
+		<a href=""></a>
+	</div>
+
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 35;
+		var together = new Date();
+		together.setFullYear(2016, 10, 20);
+		together.setHours(16);
+		together.setMinutes(00);
+		together.setSeconds(00);
+		together.setMilliseconds(0);
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "您的浏览器不支持H5特效哦!<br/>请使用: Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				adjustWordsPosition();
+				startHeartAnimation();
+			},0);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 100);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+	<script type="text/javascript" src="js/snowfall.jquery.js"></script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			$(document).snowfall({image:"images/1.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+            $(document).snowfall({image:"images/2.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+            $(document).snowfall({image:"images/4.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+            $(document).snowfall({image:"images/right.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+            $(document).snowfall({image:"images/few.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+		});
+	</script>
+</body>
+</html>
