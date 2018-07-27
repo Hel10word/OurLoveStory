@@ -25,27 +25,7 @@
 </head>
 <body>
 	<div id="mainDiv">
-		<div id="content">
-			<div id="code">
-				<span class="comments">* 2016年11月20日,平凡而又普通的一天</span><br />
-				<span class="comments">* 但这一天,我鼓起勇气靠近你</span><br /><br>
-
-				<span class="comments">* 我会一直记住这一天</span><br />
-				<span class="comments">* 如果记忆是一个罐头的话</span><br />
-				<span class="comments">* 我希望这一罐罐头永远不会过期</span><br />
-				<span class="comments">* 如果一定要加一个日子的话，我希望它是“一万年”</span><br /><br>
-				<span class="comments">
-<pre>
-    ____         __                          __  __
-   /  _/        / /   ____ _   _____         \ \/ /___  __  __
-   / /         / /   / __ \ | / / _ \         \  / __ \/ / / /
- _/ /         / /___/ /_/ / |/ /  __/         / / /_/ / /_/ /
-/___/        /_____/\____/|___/\___/         /_/\____/\____/
-</pre>
-				</span>
-				<span class="comments"><img src="images/1.jpg"></span><br />
-			</div>
-
+		<div id="myContent">
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
 				<div id="words">
@@ -58,6 +38,26 @@
 					</div>
 				</div>
 			</div>
+
+			<div id="code">
+				<span class="comments">* 2016年11月20日,平凡而又普通的一天</span><br />
+				<span class="comments">* 但这一天,我鼓起勇气靠近你</span><br /><br>
+
+				<span class="comments">* 我会一直记住这一天</span><br />
+				<span class="comments">* 如果记忆是一个罐头的话</span><br />
+				<span class="comments">* 我希望这一罐罐头永远不会过期</span><br />
+				<span class="comments">* 如果一定要加一个日子的话，我希望它是“一万年”</span><br /><br>
+				<span class="comments">
+<pre >
+    ____         __                          __  __
+   /  _/        / /   ____ _   _____         \ \/ /___  __  __
+   / /         / /   / __ \ | / / _ \         \  / __ \/ / / /
+ _/ /         / /___/ /_/ / |/ /  __/         / / /_/ / /_/ /
+/___/        /_____/\____/|___/\___/         /_/\____/\____/
+</pre>
+				</span>
+				<span class="comments"><img src="images/1.jpg"></span><br />
+			</div>
 		</div>
 	</div>
 	<div id="Download">
@@ -66,6 +66,39 @@
 		<p>游戏</p>
 		<a href=""></a>
 	</div>
+
+	<!-- 响应式布局????   这样的做法好Low   -->
+	<script>
+		$(function(){
+			test();
+			window.setInterval(test,500);
+			function test(){
+				var windowTidth = window.outerWidth;
+				var contentCss = {
+					'margin-top':'100px',
+					'width':'910px',
+					'height':'1700px'
+				}
+				var loveHeartCss={
+					'float':'left',
+					'margin-left':'100px'
+				}
+				var codeCss={
+					'font-size':'25px',
+					'width':'800px',
+					'margin-top':'100px',
+					'margin-left':'60px'
+				}
+				if(windowTidth<600) {
+					$('#myContent').css(contentCss);
+					$('#code').css(codeCss);
+					$('#loveHeart').css(loveHeartCss);
+					// $('#mobileClient').hide();
+				}
+				console.log(windowTidth)
+			}
+		})
+	</script>
 
 	<script type="text/javascript">
 		var offsetX = $("#loveHeart").width() / 2;
@@ -90,24 +123,22 @@
 				adjustWordsPosition();
 				startHeartAnimation();
 			},0);
-
 			timeElapse(together);
 			setInterval(function () {
 				timeElapse(together);
 			}, 100);
-
-			adjustCodePosition();
+			// adjustCodePosition();
 			$("#code").typewriter();
 		}
 	</script>
 	<script type="text/javascript" src="js/snowfall.jquery.js"></script>
 	<script type='text/javascript'>
 		$(document).ready(function(){
-			$(document).snowfall({image:"images/1.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
-            $(document).snowfall({image:"images/2.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
-            $(document).snowfall({image:"images/4.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
-            $(document).snowfall({image:"images/right.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
-            $(document).snowfall({image:"images/few.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+			$(window).snowfall({image:"images/1.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+            $(window).snowfall({image:"images/2.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+            $(window).snowfall({image:"images/4.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+            $(window).snowfall({image:"images/right.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
+            $(window).snowfall({image:"images/few.png", flakeCount:6, minSpeed:0.8,maxSpeed:4, minSize:8, maxSize:35,});
 		});
 	</script>
 </body>
