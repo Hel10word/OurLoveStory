@@ -4,6 +4,7 @@
 	<title>Our Love Story</title>
 	<meta charset="UTF-8">
 	<style type="text/css">
+		/*字体导入*/
 		@font-face {
 			font-family: HYChenMeiZiW;
 			src: url('HYChenMeiZiW.ttf') format("truetype");
@@ -22,10 +23,13 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/garden_dev.js"></script>
     <script type="text/javascript" src="js/functions_dev.js"></script>
+    <script type="text/javascript" src="js/customJS.js"></script>
 </head>
 <body>
 	<div id="mainDiv">
+		<!-- 主要内容 -->
 		<div id="myContent">
+			<!-- 爱心  以及  计时器~~~ -->
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
 				<div id="words">
@@ -38,7 +42,7 @@
 					</div>
 				</div>
 			</div>
-
+			<!-- 咳咳~   情话? -->
 			<div id="code">
 				<span class="comments">* 2016年11月20日,平凡而又普通的一天</span><br />
 				<span class="comments">* 但这一天,我鼓起勇气靠近你</span><br /><br>
@@ -60,46 +64,15 @@
 			</div>
 		</div>
 	</div>
+	<!-- 周边下载部分 -->
 	<div id="Download">
 		<p>相关下载</p>
-		<a href="2.14(最终发行版本).apk" download="2.14(最终发行版本).apk">2.14(最终发行版本).apk</a><br>
+			<a href="javascript:void(0)" onclick="testDownload()" >2018.2.14(情人节专属版).apk</a><br>
 		<p>游戏</p>
 		<a href=""></a>
 	</div>
 
-	<!-- 响应式布局????   这样的做法好Low   -->
-	<script>
-		$(function(){
-			test();
-			window.setInterval(test,500);
-			function test(){
-				var windowTidth = window.outerWidth;
-				var contentCss = {
-					'margin-top':'100px',
-					'width':'910px',
-					'height':'1700px'
-				}
-				var loveHeartCss={
-					'float':'left',
-					'margin-left':'100px'
-				}
-				var codeCss={
-					'font-size':'25px',
-					'width':'800px',
-					'margin-top':'100px',
-					'margin-left':'60px'
-				}
-				if(windowTidth<600) {
-					$('#myContent').css(contentCss);
-					$('#code').css(codeCss);
-					$('#loveHeart').css(loveHeartCss);
-					// $('#mobileClient').hide();
-				}
-				console.log(windowTidth)
-			}
-		})
-	</script>
-
+	<!-- 加载 代码 打字机 效果 -->
 	<script type="text/javascript">
 		var offsetX = $("#loveHeart").width() / 2;
 		var offsetY = $("#loveHeart").height() / 2 - 35;
@@ -131,6 +104,8 @@
 			$("#code").typewriter();
 		}
 	</script>
+
+	<!-- jQuery snowfall插件 实现简单的 樱花飘落 -->
 	<script type="text/javascript" src="js/snowfall.jquery.js"></script>
 	<script type='text/javascript'>
 		$(document).ready(function(){
