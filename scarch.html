@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>输入你想看的电影哦</title>
+</head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/templatemo_style.css">
+<style>
+    .bdiv{background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(245, 245, 245); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; background-position: initial initial; background-repeat: initial initial; }
+    .item-thumb{overflow:hidden;height: 340px;text-align: center; vertical-align:middle;}
+    .item-thumb img{vertical-align: middle}
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<body>
+<div style="width: 500px; margin: 0 auto;">
+    <img src="./images/sorrybg.jpg" border="0" />
+
+    <input id="sorry" style="float:left; height:30px; width:350px; line-height:30px; color:#CCC; font-size: 16px;" type="text" class="bdiv gray" value="---想看点啥呢?---" onfocus="this.className='bdiv';if (this.value=='---想看点啥呢?---') {this.value=''}" onblur="if(this.value==''){this.className+=' gray';this.value='---想看点啥呢?---'}">
+    <input id="check" class="bdiv" style="float: right; font-size: 16px; height:30px; width:100px;line-height: 100%;padding: 0px;" type="button" value="GO">
+</div>
+
+<div style="height: 160px;width: 100%;"></div>
+
+<div id="products" class="content-section">
+	<div class="container">
+		<div class="row">
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	$('#check').click(function () {
+	    $.post('https://api.eyunzhu.com/api/vatfs/resource_site_collect/search',{'kw':$('#sorry').val()},function (msg) {
+	        // console.log(msg.data.data)
+	        var length = msg.data.data.length;
+	        var myData = msg.data.data
+	        if(length==0){alert("未找到相关资源")}else{
+	        	$('.row').text("")
+	        	for(var i = 0 ;i<length;i++){
+	        		var code = '<div class="col-md-3 col-sm-6"><div class="product-item"><div class="item-thumb" onclick="test('+myData[i].vid+')" ><div class="overlay" vid="666"><div class="overlay-inner"><a class="view-detail">播放</a></div></div><img src="'+myData[i].pic+'"></div><h3>'+myData[i].name+'-'+myData[i].label+'</h3><span>'+myData[i].type+'</span></div></div>'
+	        		$('.row').append(code);
+	        	}
+	        }
+	    },"json");
+	})
+
+	function test(vid){
+		// alert(vid);
+		window.open("./moveinfo.html?vid="+vid);   
+	}
+
+</script>
+</body>
+</html>
